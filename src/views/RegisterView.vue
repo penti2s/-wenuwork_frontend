@@ -36,6 +36,24 @@
                 </v-form>
             </v-col>
         </v-row>
+              <v-dialog
+        id="dialog"
+        width="500"
+        v-model="dialog"
+        hide-overlay
+      >
+        <v-alert
+          id="alert"
+          class="fix my-0"
+          width="500"
+          v-model="dialog"
+          hide-overlay
+          color="red"
+          dismissible
+          type="error"
+        > Error al registrar
+        </v-alert>
+    </v-dialog>
     </v-container>
 </template>
 
@@ -56,6 +74,7 @@ export default {
                 v => !!v || 'Contraseña es requerida',
                 v => v.length >= 8 || 'La contraseña debe tener al menos 8 caracteres',
             ],
+            dialog: false,
         }
     },
     methods: {
@@ -76,6 +95,7 @@ export default {
                 })
                 const data = await res.json()
                 if (data.token == undefined) {
+                    this.dialog = true
                     throw new Error('Error al registrar')
                 }
                 localStorage.setItem( 'token', JSON.stringify(data.token) )
@@ -85,8 +105,12 @@ export default {
                 console.log(err.message)
             }
         },
-        //Registro usuario con fetch
-
+    },
+    watch: {
+        dialog (val) {
+            if (!val) return
+            setTimeout(() => (this.dialog = false), 5000)
+        },
     }
 }
 </script>
