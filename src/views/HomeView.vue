@@ -152,9 +152,6 @@ export default {
   created() {
     this.getAllCharacter()
   },
-  mounted() {
-    console.log(process.env.VUE_APP_URL_BACKEND)
-  },
 }
 
 
