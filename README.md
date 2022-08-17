@@ -10,15 +10,12 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Configurar variables de entorno .env en raiz del proyecto 
 ```
-npm run build
+VUE_APP_URL_BACKEND = http://localhost:3000
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
