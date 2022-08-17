@@ -64,7 +64,7 @@ export default {
                 return;
             }
             try {
-                const res = await fetch('http://localhost:3000/allsaveCharacter', {
+                const res = await fetch(`${process.env.VUE_APP_URL_BACKEND}/allsaveCharacter`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export default {
                     throw new Error('No hay personajes guardados')
                 }
                 const stringIdPersonajes = this.idPersonajes.join(',')
-                const res2 = await fetch(`https://rickandmortyapi.com/api/character/${stringIdPersonajes}`)
+                const res2 = await fetch(`${process.env.VUE_APP_URL_BACKEND}/${stringIdPersonajes}`)
                 const data2 = await res2.json()
                 this.dataCharacter = data2
             } catch (error) {

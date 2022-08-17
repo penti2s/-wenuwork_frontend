@@ -108,7 +108,7 @@ export default {
   methods: {
     async getAllCharacter() {
       // Get all character rick and morty api
-      const res = await fetch('http://localhost:3000/allpersonajes')
+      const res = await fetch(`${process.env.VUE_APP_URL_BACKEND}/allpersonajes`)
       const data = await res.json()
       this.characters = data
     },
@@ -118,7 +118,7 @@ export default {
       }else{
         this.dialog2 = true
         try {
-          const res = await fetch('http://localhost:3000/save', {
+          const res = await fetch(`${process.env.VUE_APP_URL_BACKEND}/save`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -151,6 +151,9 @@ export default {
     },
   created() {
     this.getAllCharacter()
+  },
+  mounted() {
+    console.log(process.env.VUE_APP_URL_BACKEND)
   },
 }
 

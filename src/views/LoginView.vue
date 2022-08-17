@@ -48,7 +48,7 @@ export default {
         async login() {
             this.$refs.form.validate()
             try {
-                const res = await fetch('http://localhost:3000/login', {
+                const res = await fetch(`${process.env.VUE_APP_URL_BACKEND}/login`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

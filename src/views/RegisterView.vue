@@ -63,7 +63,7 @@ export default {
         async register() {
             this.$refs.form.validate()
             try {
-                const res = await fetch('http://localhost:3000/register', {
+                const res = await fetch(`${process.env.VUE_APP_URL_BACKEND}/register`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
